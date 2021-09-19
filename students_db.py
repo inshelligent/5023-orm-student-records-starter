@@ -21,7 +21,7 @@ class Student(Base):
     science_mark = Column(Integer)
     does_homework = Column(Boolean)
     on_task = Column(Boolean)
-    
+    avg_mark = Column(Integer)    
 
 # This deletes all data in the records.db database, so that we are starting from scratch each time
 Base.metadata.drop_all(engine)
@@ -40,6 +40,7 @@ jack = Student (
     mathematics_mark = 95,
     does_homework = True,
     on_task = True,
+    avg_mark = round((90 + 90 + 95)/3),
 )
 session.add(jack)
 
@@ -51,6 +52,7 @@ dom = Student (
     mathematics_mark = 75,
     does_homework = False,
     on_task = True,
+    avg_mark = round((80 + 80 + 75)/3),
 )
 session.add(dom)
 
@@ -62,6 +64,7 @@ steve = Student (
     mathematics_mark = 55,
     does_homework = False,
     on_task = False,
+    avg_mark = round((60 + 60 + 55)/3),
 )
 session.add(steve)
 
