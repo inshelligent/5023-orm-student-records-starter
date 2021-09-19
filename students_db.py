@@ -1,4 +1,4 @@
-# Import sqlalchemy function required to write to database and Classes for defining table columns
+# Import sqlalchemy function required to write to database and Classes for defining table columns 
 from sqlalchemy import create_engine, Column, Integer, Text, Boolean
 # Import functions from SQLAlchemy ORM for defining entities and managing connection to SQLite database
 from sqlalchemy.orm import declarative_base, sessionmaker
@@ -17,10 +17,10 @@ class Student(Base):
     id = Column(Integer, primary_key=True)
     name = Column(Text)
     english_mark = Column(Integer)
-     # TODO: Add column for students' mathematics marks
+    mathematics_mark = Column(Integer)
     science_mark = Column(Integer)
     does_homework = Column(Boolean)
-    # TODO: Add column for students' stays on task behaviour
+    on_task = Column(Boolean)
     
 
 # This deletes all data in the records.db database, so that we are starting from scratch each time
@@ -37,9 +37,9 @@ jack = Student (
     name = 'Jack',
     english_mark = 90,
     science_mark = 90,
-    # TODO: Add a value for mathematics mark, once you have added that column
+    mathematics_mark = 95,
     does_homework = True,
-    # TODO: Add a value for stays on task behaviour, once you have added that column
+    on_task = True,
 )
 session.add(jack)
 
@@ -48,14 +48,22 @@ dom = Student (
     name = 'Dom',
     english_mark = 80,
     science_mark = 80,
-    # TODO: Add a value for mathematics mark, once you have added that column
+    mathematics_mark = 75,
     does_homework = False,
-    # TODO: Add a value for stays on task behaviour, once you have added that column
-
+    on_task = True,
 )
 session.add(dom)
 
  # TODO: Add code to add another student here
+steve = Student (
+    name = 'Steve',
+    english_mark = 60,
+    science_mark = 60,
+    mathematics_mark = 55,
+    does_homework = False,
+    on_task = False,
+)
+session.add(steve)
 
 # The changes are committed (saved in the underlying database - records.db)
 session.commit()
